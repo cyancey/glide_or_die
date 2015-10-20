@@ -4,9 +4,12 @@ body {
 
 #sugar-gliders-logo-container {
   text-align: center;
+  margin: auto;
+  max-width: 700px;
+  width: 95%;
 }
 
 #sugar-gliders-logo-container img {
-  width: 800px;
+  width: 100%;
 }
 
