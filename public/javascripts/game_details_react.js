@@ -15,9 +15,9 @@ function renderGameDetailsReactView(eventsModel) {
     render: function() {
       return(
         <div className="game-detail">
-          <h1>{this.props.gameDetails.name}</h1>
-          <p>{this.props.gameDetails.startDateTime.toString()}</p>
-          <p>{this.props.gameDetails.timeContext}</p>
+          <h3>{this.props.gameDetails.name}</h3>
+          <p>{this.props.gameDetails.formattedStartDate()}</p>
+          <p>{this.props.gameDetails.location}</p>
 
         </div>
       )

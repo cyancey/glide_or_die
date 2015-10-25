@@ -35,5 +35,9 @@ CalEvent.prototype = {
       date.setDate(day+1)
     }
     return eventDates
+  },
+
+  formattedStartDate: function() {
+    return moment(this.startDateTime).format("dddd, MMMM Do YYYY, h:mma")
   }
 }
