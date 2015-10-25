@@ -29,6 +29,8 @@ EventsController.prototype = {
   createCalEvents: function(response) {
     var googleEventObjects = response.items
 
+    var events = []
+
     for(var i = 0; i < googleEventObjects.length; i++){
       var googleEvent = googleEventObjects[i]
       var name = googleEvent.summary
@@ -40,6 +42,10 @@ EventsController.prototype = {
       var calEvent = new CalEvent(name, startDate, endDate, location, googleEventId)
       this.model.addEvent(calEvent)
     }
+
+    this.model.classifyEvents()
+
+    renderGameDetailsReactView(this.model)
   }
 
 }
