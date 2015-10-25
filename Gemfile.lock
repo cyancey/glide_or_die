@@ -1,11 +1,17 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    babel-source (5.8.26)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
+    execjs (2.6.0)
     haml (4.0.5)
       tilt
     rack (1.6.1)
     rack-protection (1.5.3)
       rack
+    rake (10.4.2)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -16,8 +22,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  babel-transpiler
   haml
+  rake
   sinatra
-
-BUNDLED WITH
-   1.10.6
