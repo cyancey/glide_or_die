@@ -12,8 +12,12 @@
         GOD.constants.googleCalenderId = "#{ENV['GOOGLE_CALENDAR_ID']}"
 
     %script{src: 'javascripts/jquery-2.1.4.min.js'}
-    %script{src: 'javascripts/react-min-0.14.0.js'}
-    %script{src: 'javascripts/react-dom-min-0.14.0.js'}
+    - if ENV['ENVIRONMENT'] == 'development'
+      %script{src: 'javascripts/react-0.14.0.js'}
+      %script{src: 'javascripts/react-dom-0.14.0.js'}
+    - else
+      %script{src: 'javascripts/react-min-0.14.0.js'}
+      %script{src: 'javascripts/react-dom-min-0.14.0.js'}
     %script{src: 'javascripts/events_widget/cal_event_model.js'}
     %script{src: 'javascripts/events_widget/events_model.js'}
     %script{src: 'javascripts/events_widget/events_controller.js'}
