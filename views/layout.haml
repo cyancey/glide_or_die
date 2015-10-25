@@ -4,4 +4,18 @@
     %link{href: '/stylesheets/index.css', rel: 'stylesheet', type: 'text/css'}
   %body
     = yield
+  %footer
+    :javascript
+        GOD = {}
+        GOD.constants = {}
+        GOD.constants.googleApiKey = "#{ENV['GOOGLE_API_KEY']}"
+        GOD.constants.googleCalenderId = "#{ENV['GOOGLE_CALENDAR_ID']}"
 
+    %script{src: 'javascripts/jquery-2.1.4.min.js'}
+    %script{src: 'javascripts/react-min-0.14.0.js'}
+    %script{src: 'javascripts/react-dom-min-0.14.0.js'}
+    %script{src: 'javascripts/events_widget/cal_event_model.js'}
+    %script{src: 'javascripts/events_widget/events_model.js'}
+    %script{src: 'javascripts/events_widget/events_controller.js'}
+    %script{src: 'javascripts/game_details_react_compiled_jsx.js'}
+    %script{src: 'javascripts/app.js'}
