@@ -4,8 +4,14 @@ function renderGameDetailsReactView(eventsModel) {
     render: function() {
       return (
         <div id="games-container">
-          <h1>Games</h1>
-          <GameList gameData={this.props.gameData} />
+          <h2 className="game-section-header">Next Game</h2>
+          <GameList gameData={this.props.gameData.nextEvent} />
+
+          <h2 className="game-section-header">Future Games</h2>
+          <GameList gameData={this.props.gameData.futureEvents} />
+
+          <h2 className="game-section-header">Past Games</h2>
+          <GameList gameData={this.props.gameData.pastEvents} />
         </div>
       );
     }
@@ -26,11 +32,17 @@ function renderGameDetailsReactView(eventsModel) {
 
   var GameList = React.createClass({
     render: function() {
-      var gameNodes = this.props.gameData.map(function(game) {
-        return (
-          <Game gameDetails={game} />
-        )
-      })
+      var gameNodes;
+
+      if (Array.isArray(this.props.gameData)) {
+        gameNodes = this.props.gameData.map(function(game) {
+          return (
+            <Game gameDetails={game} />
+          )
+        })
+      } else {
+        gameNodes = <Game gameDetails={this.props.gameData} />
+      }
 
       return (
         <div id='game-list'>
@@ -42,7 +54,7 @@ function renderGameDetailsReactView(eventsModel) {
 
 
   ReactDOM.render(
-    <GameDetails gameData={eventsModel.events} />,
+    <GameDetails gameData={eventsModel.classifiedEvents} />,
     document.getElementById('game-details')
   );
 }

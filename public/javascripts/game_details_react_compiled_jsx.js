@@ -10,11 +10,23 @@ function renderGameDetailsReactView(eventsModel) {
         "div",
         { id: "games-container" },
         React.createElement(
-          "h1",
-          null,
-          "Games"
+          "h2",
+          { className: "game-section-header" },
+          "Next Game"
         ),
-        React.createElement(GameList, { gameData: this.props.gameData })
+        React.createElement(GameList, { gameData: this.props.gameData.nextEvent }),
+        React.createElement(
+          "h2",
+          { className: "game-section-header" },
+          "Future Games"
+        ),
+        React.createElement(GameList, { gameData: this.props.gameData.futureEvents }),
+        React.createElement(
+          "h2",
+          { className: "game-section-header" },
+          "Past Games"
+        ),
+        React.createElement(GameList, { gameData: this.props.gameData.pastEvents })
       );
     }
   });
@@ -27,19 +39,19 @@ function renderGameDetailsReactView(eventsModel) {
         "div",
         { className: "game-detail" },
         React.createElement(
-          "h1",
+          "h3",
           null,
           this.props.gameDetails.name
         ),
         React.createElement(
           "p",
           null,
-          this.props.gameDetails.startDateTime.toString()
+          this.props.gameDetails.formattedStartDate()
         ),
         React.createElement(
           "p",
           null,
-          this.props.gameDetails.timeContext
+          this.props.gameDetails.location
         )
       );
     }
@@ -49,9 +61,15 @@ function renderGameDetailsReactView(eventsModel) {
     displayName: "GameList",
 
     render: function render() {
-      var gameNodes = this.props.gameData.map(function (game) {
-        return React.createElement(Game, { gameDetails: game });
-      });
+      var gameNodes;
+
+      if (Array.isArray(this.props.gameData)) {
+        gameNodes = this.props.gameData.map(function (game) {
+          return React.createElement(Game, { gameDetails: game });
+        });
+      } else {
+        gameNodes = React.createElement(Game, { gameDetails: this.props.gameData });
+      }
 
       return React.createElement(
         "div",
@@ -61,5 +79,5 @@ function renderGameDetailsReactView(eventsModel) {
     }
   });
 
-  ReactDOM.render(React.createElement(GameDetails, { gameData: eventsModel.events }), document.getElementById('game-details'));
+  ReactDOM.render(React.createElement(GameDetails, { gameData: eventsModel.classifiedEvents }), document.getElementById('game-details'));
 }
