@@ -33,7 +33,7 @@ EventsModel.prototype = {
       var currentEvent = this.events[i]
 
       if (currentEvent.timeContext === 'past') {
-        this.classifiedEvents.pastEvents.push(currentEvent)
+        this.classifiedEvents.pastEvents.unshift(currentEvent)
       } else if (currentEvent.timeContext === 'future') {
         this.classifiedEvents.futureEvents.push(currentEvent)
       } else if (currentEvent.timeContext === 'next') {
