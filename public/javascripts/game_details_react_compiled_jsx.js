@@ -1,7 +1,6 @@
 "use strict";
 
 function renderGameDetailsReactView(eventsModel) {
-  // debugger
   var GameDetails = React.createClass({
     displayName: "GameDetails",
 
@@ -90,7 +89,7 @@ function renderGameDetailsReactView(eventsModel) {
       if (Array.isArray(this.props.gameData)) {
         // debugger
         gameNodes = this.props.gameData.map(function (game) {
-          return React.createElement(Game, { gameDetails: game });
+          return React.createElement(Game, { key: game.googleEventId, gameDetails: game });
         });
       } else {
         if (this.props.gameData) gameNodes = React.createElement(Game, { gameDetails: this.props.gameData });

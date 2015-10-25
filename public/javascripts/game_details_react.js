@@ -1,5 +1,4 @@
 function renderGameDetailsReactView(eventsModel) {
-  // debugger
   var GameDetails = React.createClass({
     render: function() {
       return (
@@ -50,7 +49,7 @@ function renderGameDetailsReactView(eventsModel) {
         // debugger
         gameNodes = this.props.gameData.map(function(game) {
           return (
-            <Game gameDetails={game} />
+            <Game key={game.googleEventId} gameDetails={game} />
           )
         })
       } else {
