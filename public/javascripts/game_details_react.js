@@ -4,14 +4,26 @@ function renderGameDetailsReactView(eventsModel) {
     render: function() {
       return (
         <div id="games-container">
-          <h2 className="game-section-header">Next Game</h2>
-          <GameList gameData={this.props.gameData.nextEvent} />
+          <div className="game-section">
+            <h2 className="game-section-header">Next Game</h2>
+            <div className="game-section-list">
+              <GameList gameData={this.props.gameData.nextEvent} />
+            </div>
+          </div>
 
-          <h2 className="game-section-header">Future Games</h2>
-          <GameList gameData={this.props.gameData.futureEvents} />
+          <div className="game-section">
+            <h2 className="game-section-header">Future Games</h2>
+            <div className="game-section-list">
+              <GameList gameData={this.props.gameData.futureEvents} />
+            </div>
+          </div>
 
-          <h2 className="game-section-header">Past Games</h2>
-          <GameList gameData={this.props.gameData.pastEvents} />
+          <div className="game-section">
+            <h2 className="game-section-header">Past Games</h2>
+            <div className="game-section-list">
+              <GameList gameData={this.props.gameData.pastEvents} />
+            </div>
+          </div>
         </div>
       );
     }
@@ -35,18 +47,20 @@ function renderGameDetailsReactView(eventsModel) {
       var gameNodes;
 
       if (Array.isArray(this.props.gameData)) {
+        // debugger
         gameNodes = this.props.gameData.map(function(game) {
           return (
             <Game gameDetails={game} />
           )
         })
       } else {
-        gameNodes = <Game gameDetails={this.props.gameData} />
+        if (this.props.gameData) gameNodes = <Game gameDetails={this.props.gameData} />
       }
 
       return (
         <div id='game-list'>
-          {gameNodes}
+          {gameNodes && (!Array.isArray(gameNodes) || gameNodes.length > 0) ?
+            gameNodes : <div className="game-detail">No games</div>}
         </div>
       )
     }
