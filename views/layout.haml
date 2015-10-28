@@ -13,7 +13,7 @@
 
     %script{src: 'javascripts/jquery-2.1.4.min.js'}
     %script{src: 'javascripts/moment-min-2.10.6.js'}
-    - if ENV['ENVIRONMENT'] == 'development'
+    - if ENV['RACK_ENV'] == 'development'
       %script{src: 'javascripts/react-0.14.0.js'}
       %script{src: 'javascripts/react-dom-0.14.0.js'}
     - else
