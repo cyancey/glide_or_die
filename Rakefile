@@ -1,3 +1,5 @@
+require './app'
+require 'sinatra/activerecord/rake'
 require 'babel/transpiler'
 
 task :default do
